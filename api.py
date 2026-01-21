@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, List, Dict
 
@@ -13,6 +14,20 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# --------------------- CORS ---------------------
+origins = [
+    "http://localhost:8000",  # tu frontend local (Laravel)
+    "http://127.0.0.1:8000",
+    # agrega aquí cualquier otro dominio que necesites
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,      # dominios permitidos
+    allow_credentials=True,
+    allow_methods=["*"],        # GET, POST, etc.
+    allow_headers=["*"],        # Content-Type, Authorization, etc.
+)
 
 # ---------- SCHEMAS (integrados) ----------
 
