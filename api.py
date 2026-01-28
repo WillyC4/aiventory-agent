@@ -18,6 +18,7 @@ app = FastAPI(
 origins = [
     "http://localhost:8000",  # tu frontend local (Laravel)
     "http://127.0.0.1:8000",
+    "https://aiventory-819682124232.us-central1.run.app",  # despliegue en Cloud Run
     # agrega aquí cualquier otro dominio que necesites
 ]
 
